@@ -3,7 +3,7 @@ import { UiComponent } from './ui.component';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-describe('Ui Addition - Component', () => {
+describe('Ui - Component', () => {
   let component: UiComponent;
   let fixture: ComponentFixture<UiComponent>;
 
@@ -35,7 +35,20 @@ describe('Ui Addition - Component', () => {
      expect(result).toBe(4);
   });
 
+  it('Should call substraction method', () => {
+    //Arrange
+    // Arrange
+    let result = 0;
+    component.operator1 = 5;
+    component.operator2 = 2;
 
+    // Act
+    component.substraction();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(3);
+  })
 
   it('Should set operator1 model through ngModel', async() => {
     // Arrange 
@@ -82,6 +95,20 @@ describe('Ui Addition - Component', () => {
 
    });
 
+   it('should sub operator1 and operator2 when I click the substraction button ', () => {
+    // Arrange 
+    component.operator1 = 5.0;
+    component.operator2 = 2.5;
+    let substractionButton = fixture.debugElement.query(By.css('.substraction-button'));
+
+    // Act
+    substractionButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(2.5);
+
+   });
+
   it('Should render sum in result div', () => {
     // Arrange
     component.operator1 = 5;
@@ -99,5 +126,21 @@ describe('Ui Addition - Component', () => {
      
   });
 
+  it('Should render sub in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.substraction();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('0');
+     
+  });
 });
 
