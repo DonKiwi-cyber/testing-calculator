@@ -33,7 +33,7 @@ describe('multiplication unit tests', () => {
         expect(result).toBe(1.5);
     })
 
-    it(' Should mul 2.0 + 1.5 = 3.0', () => {
+    it(' Should mul 2.0 * 1.5 = 3.0', () => {
         // Arrange
         let result = 0;
         // Act

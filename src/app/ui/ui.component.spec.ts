@@ -50,6 +50,21 @@ describe('Ui - Component', () => {
     expect(result).toBe(3);
   })
 
+  it('Should call multiplication method', () => {
+    //Arrange
+    // Arrange
+    let result = 0;
+    component.operator1 = 5;
+    component.operator2 = 2;
+
+    // Act
+    component.multiplication();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(10);
+  })
+
   it('Should set operator1 model through ngModel', async() => {
     // Arrange 
     await fixture.whenStable();
@@ -109,6 +124,20 @@ describe('Ui - Component', () => {
 
    });
 
+   it('should mul operator1 and operator2 when I click the substraction button ', () => {
+    // Arrange 
+    component.operator1 = 6;
+    component.operator2 = 2.5;
+    let multiplicationButton = fixture.debugElement.query(By.css('.multiplication-button'));
+
+    // Act
+    multiplicationButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(15);
+
+   });
+
   it('Should render sum in result div', () => {
     // Arrange
     component.operator1 = 5;
@@ -140,6 +169,23 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(el.innerText).toContain('0');
+     
+  });
+
+  it('Should render mul in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.multiplication();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('25');
      
   });
 });
