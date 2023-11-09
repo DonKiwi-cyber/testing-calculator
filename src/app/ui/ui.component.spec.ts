@@ -77,6 +77,20 @@ describe('Ui - Component', () => {
     expect(result).toBe(10);
   })
 
+  it('Should call division method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 2;
+    component.operator2 = 3;
+
+    // Act
+    component.exp();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(8);
+  })
+
   it('Should set operator1 model through ngModel', async() => {
     // Arrange 
     await fixture.whenStable();
@@ -164,6 +178,20 @@ describe('Ui - Component', () => {
 
    });
 
+   it('should exp operator1 and operator2 when I click the exp button ', () => {
+    // Arrange 
+    component.operator1 = 102.897;
+    component.operator2 = 0;
+    let expButton = fixture.debugElement.query(By.css('.exp-button'));
+
+    // Act
+    expButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(1);
+
+   });
+
   it('Should render sum in result div', () => {
     // Arrange
     component.operator1 = 5;
@@ -229,6 +257,23 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(el.innerText).toContain('1');
+     
+  });
+
+  it('Should render exp in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.exp();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('3125');
      
   });
 });
