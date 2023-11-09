@@ -77,7 +77,7 @@ describe('Ui - Component', () => {
     expect(result).toBe(10);
   })
 
-  it('Should call division method', () => {
+  it('Should call exp method', () => {
     //Arrange
     let result = 0;
     component.operator1 = 2;
@@ -89,6 +89,19 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(8);
+  })
+
+  it('Should call exp method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 9;
+
+    // Act
+    component.sqrt();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(3);
   })
 
   it('Should set operator1 model through ngModel', async() => {
@@ -192,6 +205,19 @@ describe('Ui - Component', () => {
 
    });
 
+   it('should exp operator1 and operator2 when I click the exp button ', () => {
+    // Arrange 
+    component.operator1 = 49;
+    let sqrtButton = fixture.debugElement.query(By.css('.sqrt-button'));
+
+    // Act
+    sqrtButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(7);
+
+   });
+
   it('Should render sum in result div', () => {
     // Arrange
     component.operator1 = 5;
@@ -274,6 +300,22 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(el.innerText).toContain('3125');
+     
+  });
+
+  it('Should render sqrt in result div', () => {
+    // Arrange
+    component.operator1 = 25;
+ 
+    // Act
+    component.sqrt();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('5');
      
   });
 });
