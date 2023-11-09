@@ -37,7 +37,6 @@ describe('Ui - Component', () => {
 
   it('Should call substraction method', () => {
     //Arrange
-    // Arrange
     let result = 0;
     component.operator1 = 5;
     component.operator2 = 2;
@@ -52,13 +51,26 @@ describe('Ui - Component', () => {
 
   it('Should call multiplication method', () => {
     //Arrange
-    // Arrange
     let result = 0;
     component.operator1 = 5;
     component.operator2 = 2;
 
     // Act
     component.multiplication();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(10);
+  })
+
+  it('Should call division method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 20;
+    component.operator2 = 2;
+
+    // Act
+    component.division();
     result = component.result;
 
     // Assert
@@ -124,7 +136,7 @@ describe('Ui - Component', () => {
 
    });
 
-   it('should mul operator1 and operator2 when I click the substraction button ', () => {
+   it('should mul operator1 and operator2 when I click the multiplication button ', () => {
     // Arrange 
     component.operator1 = 6;
     component.operator2 = 2.5;
@@ -132,6 +144,20 @@ describe('Ui - Component', () => {
 
     // Act
     multiplicationButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(15);
+
+   });
+
+   it('should div operator1 and operator2 when I click the division button ', () => {
+    // Arrange 
+    component.operator1 = 7.5;
+    component.operator2 = 0.5;
+    let divisionButton = fixture.debugElement.query(By.css('.division-button'));
+
+    // Act
+    divisionButton.triggerEventHandler('click', null);
 
     // Assert
     expect(component.result).toBe(15);
@@ -186,6 +212,23 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(el.innerText).toContain('25');
+     
+  });
+
+  it('Should render div in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.division();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('1');
      
   });
 });
