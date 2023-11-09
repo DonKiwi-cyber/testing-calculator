@@ -42,4 +42,13 @@ describe('substraction unit tests', () => {
         expect(result).toBe(2.0);
     })
 
+    it('Should subs 1 - -2 = 3', () => {
+        //Arrange
+        let result = 0;
+        //Act
+        result = substraction(1, -2);
+        //Assert
+        expect(result).toBe(3)
+    })
+
 })
