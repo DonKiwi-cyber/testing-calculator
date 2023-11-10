@@ -42,4 +42,12 @@ describe('division unit tests', () => {
         expect(result).toBe(0);
     })
 
+    it(' Should divide 2 / 4 = 0.5', () => {
+        // Arrange
+        let result = 0;
+        // Act
+        result = division(2, 4);
+        // Assert
+        expect(result).toBe(0.5);
+    })
 })
