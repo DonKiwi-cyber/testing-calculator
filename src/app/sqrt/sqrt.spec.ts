@@ -42,5 +42,12 @@ describe('sqrt unit tests', () => {
         expect(result).toBe(2);
     })
 
- 
+    it('Should compute sqrt (100) = 10', () => {
+        // Arrange
+        let result = 0;
+        // Act
+        result = sqrt(100);
+        // Assert
+        expect(result).toBe(10);
+    })
 })

@@ -2,13 +2,11 @@
 
     <form>
         <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span> 
-            <input id="operator1" [(ngModel)]="operator1" type="number" class="form-control operator1" name="operator1" placeholder="0.0">
+            <input id="operator" [(ngModel)]="operator1" type="number" class="form-control operator1" name="operator1" placeholder="0.0">
         </div>
 
         <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-            <input id="operator2" [(ngModel)]="operator2" type="number" class="form-control operator2" name="operator2" placeholder="0.0">
+            <input id="operator" [(ngModel)]="operator2" type="number" class="form-control operator2" name="operator2" placeholder="0.0">
         </div>
     </form>
 
@@ -18,6 +16,19 @@
     <i class="glyphicon glyphicon-minus substraction-button"
         (click)="substraction()"></i>
 
+    <i class="glyphicon glyphicon-remove multiplication-button"
+        (click)="multiplication()"></i><br>
+
+    <i class="glyphicon glyphicon-adjust division-button"
+        (click)="division()"></i>
+
+    <i class="glyphicon glyphicon-superscript exp-button"
+        (click)="exp()"></i>
+
+    <i class="	glyphicon glyphicon-ok sqrt-button"
+        (click)="sqrt()"></i>
+
+    <span class="result">{{ result }}</span>
 </div>
 
-<span class="result">{{ result }}</span>
+

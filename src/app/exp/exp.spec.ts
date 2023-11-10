@@ -42,5 +42,12 @@ describe('exp unit tests', () => {
         expect(result).toBe(8);
     })
 
-
+    it('Should pow 10 ^ 1 = 10', () => {
+        // Arrange
+        let result = 0;
+        // Act
+        result = exp(10, 1);
+        // Assert
+        expect(result).toBe(10);
+    })
 })

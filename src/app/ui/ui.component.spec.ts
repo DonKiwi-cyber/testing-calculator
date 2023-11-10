@@ -3,7 +3,7 @@ import { UiComponent } from './ui.component';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-describe('Ui Addition - Component', () => {
+describe('Ui - Component', () => {
   let component: UiComponent;
   let fixture: ComponentFixture<UiComponent>;
 
@@ -35,7 +35,75 @@ describe('Ui Addition - Component', () => {
      expect(result).toBe(4);
   });
 
+  it('Should call substraction method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 5;
+    component.operator2 = 2;
 
+    // Act
+    component.substraction();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(3);
+  });
+
+  it('Should call multiplication method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 5;
+    component.operator2 = 2;
+
+    // Act
+    component.multiplication();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(10);
+  });
+
+  it('Should call division method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 20;
+    component.operator2 = 2;
+
+    // Act
+    component.division();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(10);
+  });
+
+  it('Should call exp method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 2;
+    component.operator2 = 3;
+
+    // Act
+    component.exp();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(8);
+  });
+
+  it('Should call sqrt method', () => {
+    //Arrange
+    let result = 0;
+    component.operator1 = 9;
+    component.operator2 = 0;
+
+    // Act
+    component.sqrt();
+    result = component.result;
+
+    // Assert
+    expect(result).toBe(3);
+  });
 
   it('Should set operator1 model through ngModel', async() => {
     // Arrange 
@@ -82,6 +150,76 @@ describe('Ui Addition - Component', () => {
 
    });
 
+   it('should sub operator1 and operator2 when I click the substraction button ', () => {
+    // Arrange 
+    component.operator1 = 5.0;
+    component.operator2 = 2.5;
+    let substractionButton = fixture.debugElement.query(By.css('.substraction-button'));
+
+    // Act
+    substractionButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(2.5);
+
+   });
+
+   it('should mul operator1 and operator2 when I click the multiplication button ', () => {
+    // Arrange 
+    component.operator1 = 6;
+    component.operator2 = 2.5;
+    let multiplicationButton = fixture.debugElement.query(By.css('.multiplication-button'));
+
+    // Act
+    multiplicationButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(15);
+
+   });
+
+   it('should div operator1 and operator2 when I click the division button ', () => {
+    // Arrange 
+    component.operator1 = 7.5;
+    component.operator2 = 0.5;
+    let divisionButton = fixture.debugElement.query(By.css('.division-button'));
+
+    // Act
+    divisionButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(15);
+
+   });
+
+   it('should exp operator1 and operator2 when I click the exp button ', () => {
+    // Arrange 
+    component.operator1 = 102.897;
+    component.operator2 = 0;
+    let expButton = fixture.debugElement.query(By.css('.exp-button'));
+
+    // Act
+    expButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(1);
+
+   });
+
+   it('should sqrt operator1 when I click the sqrt button', () => {
+    // Arrange 
+    component.operator1 = 49;
+    component.operator2 = 0;
+    let sqrtButton = fixture.debugElement.query(By.css('.sqrt-button'));
+
+    // Act
+    sqrtButton.triggerEventHandler('click', null);
+
+    // Assert
+    expect(component.result).toBe(7);
+
+   });
+
   it('Should render sum in result div', () => {
     // Arrange
     component.operator1 = 5;
@@ -99,5 +237,88 @@ describe('Ui Addition - Component', () => {
      
   });
 
+  it('Should render sub in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.substraction();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('0');
+     
+  });
+
+  it('Should render mul in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.multiplication();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('25');
+     
+  });
+
+  it('Should render div in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.division();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('1');
+     
+  });
+
+  it('Should render exp in result div', () => {
+    // Arrange
+    component.operator1 = 5;
+    component.operator2 = 5;
+ 
+    // Act
+    component.exp();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('3125');
+     
+  });
+
+  it('Should render sqrt in result div', () => {
+    // Arrange
+    component.operator1 = 25;
+    component.operator2 = 0;
+    // Act
+    component.sqrt();
+    fixture.detectChanges();
+    
+    let de = fixture.debugElement.query(By.css('.result'));
+    let el : HTMLElement = de.nativeElement;
+
+    // Assert
+    expect(el.innerText).toContain('5');
+     
+  });
 });
 
