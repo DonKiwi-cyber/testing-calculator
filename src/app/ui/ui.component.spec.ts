@@ -47,7 +47,7 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(3);
-  })
+  });
 
   it('Should call multiplication method', () => {
     //Arrange
@@ -61,7 +61,7 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(10);
-  })
+  });
 
   it('Should call division method', () => {
     //Arrange
@@ -75,7 +75,7 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(10);
-  })
+  });
 
   it('Should call exp method', () => {
     //Arrange
@@ -89,12 +89,13 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(8);
-  })
+  });
 
-  it('Should call exp method', () => {
+  it('Should call sqrt method', () => {
     //Arrange
     let result = 0;
     component.operator1 = 9;
+    component.operator2 = 0;
 
     // Act
     component.sqrt();
@@ -102,7 +103,7 @@ describe('Ui - Component', () => {
 
     // Assert
     expect(result).toBe(3);
-  })
+  });
 
   it('Should set operator1 model through ngModel', async() => {
     // Arrange 
@@ -205,9 +206,10 @@ describe('Ui - Component', () => {
 
    });
 
-   it('should exp operator1 and operator2 when I click the exp button ', () => {
+   it('should sqrt operator1 when I click the sqrt button', () => {
     // Arrange 
     component.operator1 = 49;
+    component.operator2 = 0;
     let sqrtButton = fixture.debugElement.query(By.css('.sqrt-button'));
 
     // Act
@@ -306,7 +308,7 @@ describe('Ui - Component', () => {
   it('Should render sqrt in result div', () => {
     // Arrange
     component.operator1 = 25;
- 
+    component.operator2 = 0;
     // Act
     component.sqrt();
     fixture.detectChanges();

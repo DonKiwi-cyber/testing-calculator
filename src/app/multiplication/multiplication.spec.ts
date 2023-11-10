@@ -42,4 +42,12 @@ describe('multiplication unit tests', () => {
         expect(result).toBe(3.0);
     })
 
+    it(' Should mul 20 * -0.5 = -10', () => {
+        // Arrange
+        let result = 0;
+        // Act
+        result = multiplication(20, -0.5);
+        // Assert
+        expect(result).toBe(-10);
+    })
 })
